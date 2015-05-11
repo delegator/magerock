@@ -1,1 +1,2 @@
-#Capistrano / Composer Magento Setup
+# MageRock
+## a Magento, Modman, Composer, Capistrano project
