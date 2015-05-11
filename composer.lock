@@ -1,0 +1,127 @@
+{
+    "_readme": [
+        "This file locks the dependencies of your project to a known state",
+        "Read more about it at http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
+        "This file is @generated automatically"
+    ],
+    "hash": "db6c3442fc6520b450a3589ae1418942",
+    "packages": [
+        {
+            "name": "magento/core",
+            "version": "1.9.1.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/bragento/magento-core.git",
+                "reference": "4ee3d2b7d94a2fb77a12342d09c8141cd22e2f78"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/bragento/magento-core/zipball/4ee3d2b7d94a2fb77a12342d09c8141cd22e2f78",
+                "reference": "4ee3d2b7d94a2fb77a12342d09c8141cd22e2f78",
+                "shasum": ""
+            },
+            "type": "magento-core",
+            "extra": {
+                "map": [
+                    [
+                        "app",
+                        "app"
+                    ],
+                    [
+                        "downloader",
+                        "downloader"
+                    ],
+                    [
+                        "errors",
+                        "errors"
+                    ],
+                    [
+                        "includes",
+                        "includes"
+                    ],
+                    [
+                        "js",
+                        "js"
+                    ],
+                    [
+                        "lib",
+                        "lib"
+                    ],
+                    [
+                        "media",
+                        "media"
+                    ],
+                    [
+                        "pkginfo",
+                        "pkginfo"
+                    ],
+                    [
+                        "shell",
+                        "shell"
+                    ],
+                    [
+                        "skin",
+                        "skin"
+                    ],
+                    [
+                        "var",
+                        "var"
+                    ],
+                    [
+                        ".htaccess",
+                        ".htaccess"
+                    ],
+                    [
+                        "api.php",
+                        "api.php"
+                    ],
+                    [
+                        "cron.php",
+                        "cron.php"
+                    ],
+                    [
+                        "cron.sh",
+                        "cron.sh"
+                    ],
+                    [
+                        "favicon.ico",
+                        "favicon.ico"
+                    ],
+                    [
+                        "get.php",
+                        "get.php"
+                    ],
+                    [
+                        "index.php",
+                        "index.php"
+                    ],
+                    [
+                        "install.php",
+                        "install.php"
+                    ],
+                    [
+                        "mage",
+                        "mage"
+                    ]
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "OSL-3.0"
+            ],
+            "description": "Magento Core",
+            "homepage": "http://www.magentocommerce.com",
+            "time": "2015-05-05 10:29:37"
+        }
+    ],
+    "packages-dev": [],
+    "aliases": [],
+    "minimum-stability": "stable",
+    "stability-flags": [],
+    "prefer-stable": false,
+    "prefer-lowest": false,
+    "platform": {
+        "php": ">=5.3"
+    },
+    "platform-dev": []
+}

@@ -1,0 +1,21 @@
+{
+  "name": "delegator/spendipity",
+  "type": "project",
+  "description": "",
+  "homepage": "https://www.delegator.com",
+  "license": "proprietary",
+  "config": {
+    "preferred-install": "dist",
+    "generate-salts": true
+  },
+  "repositories": [
+    {
+      "type": "composer",
+      "url": "http://wpackagist.org"
+    }
+  ], 
+  "require": {
+    "php": ">=5.3",
+    "magento/core": "1.9.1.1"
+  }
+}
