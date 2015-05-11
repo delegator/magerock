@@ -12,11 +12,30 @@
     {
       "type": "composer",
       "url": "http://wpackagist.org"
+    },
+    {
+      "type": "vcs",
+      "url": "git@github.com:AydinHassan/magento-community.git"
+    },
+    {
+      "type": "composer",
+      "url": "http://packages.firegento.com"
     }
   ], 
   "require": {
     "php": ">=5.3",
-    "magento/core": "1.9.1.1"
+    "aydin-hassan/magento-core-composer-installer": "~1.2",
+    "magento/magento": "1.9.1.0",
+    "magento-hackathon/magento-composer-installer": "3.0.2"
+  },
+  "extra": {
+    "magento-root-dir": "web/magento",
+    "magento-core-deploy" : {
+      "excludes": [ 
+        "media",
+        "app/etc/local.xml"
+      ]
+    }
   },
   "scripts": {
     "post-install-cmd": [
