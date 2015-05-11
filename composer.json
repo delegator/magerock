@@ -17,5 +17,10 @@
   "require": {
     "php": ">=5.3",
     "magento/core": "1.9.1.1"
+  },
+  "scripts": {
+    "post-install-cmd": [
+      "scripts/link.sh"
+    ]
   }
 }

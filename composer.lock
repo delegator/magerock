@@ -4,7 +4,7 @@
         "Read more about it at http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "db6c3442fc6520b450a3589ae1418942",
+    "hash": "e5932fdd5d5ee80aa55aecfb725af62f",
     "packages": [
         {
             "name": "magento/core",
