@@ -1,0 +1,1 @@
+#Capistrano / Composer Magento Setup
