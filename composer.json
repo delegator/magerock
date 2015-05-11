@@ -26,20 +26,24 @@
     "php": ">=5.3",
     "aydin-hassan/magento-core-composer-installer": "~1.2",
     "magento/magento": "1.9.1.0",
-    "magento-hackathon/magento-composer-installer": "3.0.2"
+    "magento-hackathon/magento-composer-installer": "3.0.2",
+    "vlucas/phpdotenv": "~1.1"
   },
   "extra": {
     "magento-root-dir": "web/magento",
     "magento-core-deploy" : {
       "excludes": [ 
         "media",
-        "app/etc/local.xml"
+        "app/etc/local.xml",
+        "var/log",
+        "var/cache"
       ]
     }
   },
   "scripts": {
     "post-install-cmd": [
-      "scripts/link.sh"
+      "scripts/link.sh",
+      "scripts/local.php"
     ]
   }
 }
