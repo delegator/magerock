@@ -34,16 +34,18 @@
     "magento-core-deploy" : {
       "excludes": [ 
         "media",
-        "app/etc/local.xml",
         "var/log",
         "var/cache"
       ]
     }
   },
+  "autoload": {
+    "psr-4": { "": "scripts" }
+  },
   "scripts": {
     "post-install-cmd": [
       "scripts/link.sh",
-      "scripts/local.php"
+      "Installer::generateLocal"
     ]
   }
 }
