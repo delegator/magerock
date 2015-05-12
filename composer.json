@@ -35,7 +35,8 @@
       "excludes": [ 
         "media",
         "var/log",
-        "var/cache"
+        "var/cache",
+        ".htaccess"
       ]
     }
   },
@@ -44,8 +45,11 @@
   },
   "scripts": {
     "post-install-cmd": [
-      "scripts/link.sh",
+      "Installer::modman",
       "Installer::generateLocal"
+    ],
+    "pre-install-cmd": [
+      "mkdir -p web/magento"
     ]
   }
 }

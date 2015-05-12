@@ -6,10 +6,12 @@ class Installer
     const WARNING = 3;
     const DANGER  = 1;
 
-    public static function loadEnv()
+    public static function loadEnv($spacers = 0)
     {
         require __DIR__ . '/../vendor/autoload.php';
-        self::output("Loading .env");
+        $spacer = '';
+        for ($i=0;$i<$spacers;$i++) { $spacer .= ' '; }
+        self::output($spacer . "├─ Loading .env");
         Dotenv::load(
             __DIR__
             . DIRECTORY_SEPARATOR . '..'
@@ -26,37 +28,45 @@ class Installer
             'DB_HOST',
             'BASE_URL',
             'MAGERUN',
-            'SECRET_KEY'
+            'SECRET_KEY',
+            'ADMIN_FNAME',
+            'ADMIN_LNAME',
+            'ADMIN_EMAIL',
+            'ADMIN_USER',
+            'ADMIN_PASSWORD'
             ));
         } catch (RuntimeException $e) {
             self::output($e->getMessage(), Installer::DANGER);
             exit;
         }
-        self::output("Successfully loaded .env", Installer::SUCCESS);
+        self::output($spacer . "│  └─ Successfully loaded .env", Installer::SUCCESS);
     }
-    public static function command($cmd)
+    public static function command($cmd, $verbose=false, $mute=true)
     {
-        self::output("Running `$cmd`", Installer::WARNING);
-        exec($cmd,$output,$success);
-        if (!$success) {
-            self::output("Finished", Installer::SUCCESS);
-        } else {
-            self::output("Encountered Errors", Installer::DANGER);
+        if (!$mute) {
+            self::output("Running `$cmd`", Installer::WARNING);
         }
-        foreach ($output as $o)
-        {
-            //echo $o;
-            //echo "\n";
+        exec('pushd web/magento && ' . $cmd . ' && popd',$output,$error);
+        if ($verbose) {
+            if (!$error) {
+                self::output("Finished", Installer::SUCCESS);
+            } else {
+                self::output("Encountered Errors", Installer::DANGER);
+            }
+            foreach($output as $o) {
+                self::output(">> $o", Installer::WARNING);    
+            }
         }
-        //echo "\n";
-        return $success;
+        return !$error; //return whether successful or not
     }
     public static function generateLocal()
-    {
-        self::loadEnv();
-        $cmd1 = 'pushd web/magento && mv app/etc/local.xml app/etc/local.backup && popd';
-        $cmd2 = 'pushd web/magento &&'
-            . ' ' . getenv('MAGERUN')
+    {   
+        self::output('Regenerating local.xml');
+        self::loadEnv(2);
+        self::output('  ├─ checking for app/etc/local.xml');
+        $cmd1 = '[ -f app/etc/local.xml ] || exit 1';
+        $cmd2 = 'mv app/etc/local.xml app/etc/local.backup';
+        $cmd3 = getenv('MAGERUN')
             . ' ' . 'local-config:generate' 
             . ' ' . getenv('DB_HOST') 
             . ' ' . getenv('DB_USER')
@@ -64,57 +74,83 @@ class Installer
             . ' ' . getenv('DB_NAME')
             . ' ' . 'files' 
             . ' ' . 'admin'
-            . ' ' . getenv('SECRET_KEY')
-            . ' && popd';
-        $cmd3 = 'pushd web/magento && rm app/etc/local.backup';
-        if (!self::command($cmd1)) {
+            . ' ' . getenv('SECRET_KEY');
+        $cmd4 = 'rm app/etc/local.backup';
+        if (self::command($cmd1)) {
             self::command($cmd2);
+            self::output('  ├─ backed up old local.xml', Installer::SUCCESS);
             self::command($cmd3);
+            self::output('  ├─ generated new local.xml', Installer::SUCCESS);
+            self::command($cmd4);
+            self::output('  └─ replaced old local.xml', Installer::SUCCESS);
             self::output("Please not that this only created a local.xml file; it did not fill the database with default values.");
         } else {
-            self::output("Installing...");
+            self::output("  │  └─ No local.xml found", Installer::WARNING);
+            self::output("  └─ Installing Magento based on .env");
             self::install();
         }
     }
 
     public static function install() 
     {
-        self::loadEnv();
+        self::loadEnv(5);
 
-        $cmd = 'pushd web/magento && php -f install.php -- ' . 
-            '--license_agreement_accepted "yes" ' . 
-            '--locale "'. getenv('LOCALE') . '" ' . 
-            '--timezone "'. getenv('TIME_ZONE') . '" ' . 
-            '--default_currency "'. getenv('CURRENCY') . '" ' . 
-            '--db_host "'. getenv('DB_HOST') . '" ' . 
-            '--db_name "'. getenv('DB_NAME') . '" ' . 
-            '--db_user "'. getenv('DB_USER') . '" ' . 
-            '--db_pass "'. getenv('DB_PASSWORD') . '" ' . 
-            '--db_prefix "" ' . 
-            '--session_save "files" ' . 
-            '--admin_frontname "admin" ' . 
-            '--url "'. getenv('BASE_URL') . '" ' . 
-            '--use_rewrites "yes" ' . 
-            '--use_secure "yes" ' . 
-            '--secure_base_url "'. getenv('BASE_URL') . '" ' . 
-            '--use_secure_admin "yes" ' . 
-            '--admin_firstname "John" ' . 
-            '--admin_lastname "Smith" ' . 
-            '--admin_email "john.smith@example.com" ' . 
-            '--admin_username "admin" ' . 
-            '--admin_password "password123" ' . 
-            '--encryption_key "'. getenv('SECRET_KEY') . '" ' .
-            ' && popd';
+        self::output("     └─ Installing");
+        $cmd = 'php -f install.php -- '
+            . '--license_agreement_accepted "yes" '
+            . '--locale "'. getenv('LOCALE') . '" '
+            . '--timezone "'. getenv('TIME_ZONE') . '" '
+            . '--default_currency "'. getenv('CURRENCY') . '" '
+            . '--db_host "'. getenv('DB_HOST') . '" '
+            . '--db_name "'. getenv('DB_NAME') . '" '
+            . '--db_user "'. getenv('DB_USER') . '" '
+            . '--db_pass "'. getenv('DB_PASSWORD') . '" ' 
+            . '--db_prefix "" ' 
+            . '--session_save "files" ' 
+            . '--admin_frontname "admin" ' 
+            . '--url "'. getenv('BASE_URL') . '" ' 
+            . '--use_rewrites "yes" ' 
+            . '--use_secure "yes" ' 
+            . '--secure_base_url "'. getenv('BASE_URL') . '" '
+            . '--use_secure_admin "yes" '
+            . '--admin_firstname "' . getenv('ADMIN_FNAME') . '" '
+            . '--admin_lastname "' . getenv('ADMIN_LNAME') . '" '
+            . '--admin_email "' . getenv('ADMIN_EMAIL') . '" '
+            . '--admin_username "' . getenv('ADMIN_USER') . '" '
+            . '--admin_password "' . getenv('ADMIN_PASSWORD') . '" '
+            . '--encryption_key "'. getenv('SECRET_KEY') . '" ';
 
-            self::command($cmd);
+            if (self::command($cmd, true)) {
+                self::output("        └─ Success!");
+            } else {
+                self::output("        └─ Something went wrong", Installer::DANGER);
+            }
     }
 
-    public static function output($string, $color = Installer::INFO)
+    public static function modman()
     {
+        self::output('Initializing Modman');
+        self::loadEnv(2);
+        $cmd1 = '[ -f .modman ] || exit 1';
+        if (!self::command($cmd1)) {
+            self::output('  └─ Modman already initialized', Installer::WARNING);
+        } else {
+            self::output('  ├─ modman init', Installer::INFO);
+            self::command('modman init');
+            self::output('  └─ modman link', Installer::INFO);
+            self::command('modman link ../theme');
+        }
+    }
 
+    public static function output($string, $color = Installer::INFO, $newline = true)
+    {
+        passthru("printf $(tput setaf " . Installer::INFO . ")");
+        echo ":: ";
         passthru("printf $(tput setaf " . $color . ")");
-        echo ":: " . $string;
+        echo $string;
         passthru("printf $(tput sgr0)");
-        echo "\n";
+        if ($newline) {
+            echo "\n";
+        }
     }
 }
