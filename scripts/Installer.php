@@ -92,7 +92,7 @@ class Installer
         echo `php --version`;
         echo `which php`;
         self::output("     └─ Installing");
-        $cmd = '/usr/bin/local/php -f install.php -- '
+        $cmd = '/usr/local/bin/php -f install.php -- '
             . '--license_agreement_accepted "yes" '
             . '--locale "'. getenv('LOCALE') . '" '
             . '--timezone "'. getenv('TIME_ZONE') . '" '
