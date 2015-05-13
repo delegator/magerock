@@ -16,6 +16,7 @@ namespace :mage do
   desc "Initialize Magento Linked Files/Directories"
   task :init do
     on roles(:all) do |host|
+      info :deploy_to
       execute 'mkdir -p shared/web/magento'
       execute 'mkdir -p shared/web/magento/log'
       execute 'mkdir -p shared/web/magento/var'
@@ -28,7 +29,7 @@ namespace :mage do
   desc "Test"
   task :test do
     on roles(:all) do |host|
-      info "Test #{host}"
+      execute "#{deploy_to}/current/scripts/run-modman.sh #{SSHKit.config.command_map[:modman]}"
     end
   end
 

@@ -8,6 +8,7 @@ set :deploy_to, '/users/wlewis/Sites/test.magerock'
 
 SSHKit.config.command_map[:php] = "/usr/local/bin/php"
 SSHKit.config.command_map[:composer] = "/usr/local/bin/composer"
+SSHKit.config.command_map[:modman] = "/usr/local/bin/modman"
 
 set :composer_install_flags, '--no-dev --no-interaction --optimize-autoloader'
 
