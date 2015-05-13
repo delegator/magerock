@@ -6,7 +6,7 @@ set :repo_url, 'git@github.com:delegator/magerock.git'
 
 set :branch, `git rev-parse --abbrev-ref HEAD`.chomp
 
-set :log_level, :debug
+set :log_level, :info
 
 set :linked_files, fetch(:linked_files, []).push('.env')
 set :linked_dirs, fetch(:linked_dirs, []).push('web/magento/media', 'web/magento/var/log', 'web/magento/var/cache')
@@ -38,6 +38,14 @@ namespace :mage do
   task :modman do
     on roles(:all) do |host|
       execute "#{deploy_to}/current/scripts/run-modman.sh #{SSHKit.config.command_map[:modman]}"
+    end
+  end
+
+  desc "Generate local.xml"
+  task :localxml do
+    on roles(:all) do |host|
+      info 'Generating local.xml based on .env. Will overwrite current local.xml if there is one.'
+      execute "#{deploy_to}/current/scripts/generate-local.sh #{SSHKit.config.command_map[:magerun]}"
     end
   end
 
