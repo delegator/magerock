@@ -88,7 +88,8 @@ class Installer
     public static function install() 
     {
         self::loadEnv(5);
-        `env`;
+        echo `env`;
+        echo `php --version`;
         self::output("     └─ Installing");
         $cmd = 'php -f install.php -- '
             . '--license_agreement_accepted "yes" '
