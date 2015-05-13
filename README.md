@@ -11,11 +11,12 @@ Fork this repo to start a new Magento site with everything in place for quick an
 4. Run `./scripts/install-magento.sh` to get a fresh Magento install
 
 ### Remote Stage Environment
-In the following steps, <stage> is one of (production|staging|testing)
+In the following steps, <stage> is the Capistrano stage you want to use. 
 
-1. Run `bin/cap <stage> mage:init`
-2. Setup the `.env` file in the deploy directory appropriately
-3. Run `bin/cap <stage> deploy:check`
-4. Run `bin/cap <stage> deploy`
-5. Run `bin/cap <stage> mage:modman`
-6. Run `bin/cap <stage> mage:install` if you want a fresh Magento install
+1. Set up the Capistrano stage you want to use
+2. Run `bin/cap <stage> mage:init`
+3. Setup the `.env` file in the deploy directory appropriately
+4. Run `bin/cap <stage> deploy:check`
+5. Run `bin/cap <stage> deploy`
+6. Run `bin/cap <stage> mage:modman`
+7. Run `bin/cap <stage> mage:install` if you want a fresh Magento install

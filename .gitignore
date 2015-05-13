@@ -1,3 +1,4 @@
 vendor
 web/magento/
 .env
+config/deploy/testing.rb
