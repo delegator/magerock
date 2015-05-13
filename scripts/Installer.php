@@ -115,7 +115,7 @@ class Installer
             . '--admin_password "' . getenv('ADMIN_PASSWORD') . '" '
             . '--encryption_key "'. getenv('SECRET_KEY') . '" ';
 
-            if (self::command($cmd, true)) {
+            if (self::command($cmd . ' 2>&1', true)) {
                 self::output("        └─ Success!");
             } else {
                 self::output("        └─ Something went wrong", Installer::DANGER);

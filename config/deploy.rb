@@ -8,7 +8,7 @@ set :branch, `git rev-parse --abbrev-ref HEAD`.chomp
 
 set :log_level, :debug
 
-set :linked_files, fetch(:linked_files, []).push('web/magento/app/etc/local.xml', '.env')
+set :linked_files, fetch(:linked_files, []).push('.env')
 set :linked_dirs, fetch(:linked_dirs, []).push('web/magento/media', 'web/magento/var/log', 'web/magento/var/cache')
 
 SSHKit.config.command_map[:composer] = "/usr/local/bin/composer"
