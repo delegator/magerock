@@ -90,6 +90,7 @@ class Installer
         self::loadEnv(5);
         echo `env`;
         echo `php --version`;
+        echo `which php`;
         self::output("     └─ Installing");
         $cmd = 'php -f install.php -- '
             . '--license_agreement_accepted "yes" '
