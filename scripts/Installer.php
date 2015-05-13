@@ -144,11 +144,11 @@ class Installer
 
     public static function output($string, $color = Installer::INFO, $newline = true)
     {
-        passthru("printf $(tput setaf " . Installer::INFO . ")");
+        //passthru("printf $(tput setaf " . Installer::INFO . ")");
         echo ":: ";
-        passthru("printf $(tput setaf " . $color . ")");
+        //passthru("printf $(tput setaf " . $color . ")");
         echo $string;
-        passthru("printf $(tput sgr0)");
+        //passthru("printf $(tput sgr0)");
         if ($newline) {
             echo "\n";
         }
