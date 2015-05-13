@@ -1,0 +1,4 @@
+#!/bin/bash
+DIR=$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )
+source $DIR/../.env
+echo "--license_agreement_accepted yes --locale $LOCALE --timezone $TIME_ZONE --default_currency $CURRENCY --db_host $DB_HOST --db_name $DB_NAME --db_user $DB_USER --db_pass $DB_PASSWORD --session_save files --admin_frontname admin --url $BASE_URL --use_rewrites yes --use_secure yes --secure_base_url $BASE_URL --use_secure_admin yes --admin_firstname $ADMIN_FNAME --admin_lastname $ADMIN_LNAME --admin_email $ADMIN_EMAIL --admin_username $ADMIN_USER --admin_password $ADMIN_PASSWORD --encryption_key $SECRET_KEY --skip_url_validation 1"

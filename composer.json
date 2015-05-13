@@ -45,8 +45,7 @@
   },
   "scripts": {
     "post-install-cmd": [
-      "Installer::modman",
-      "Installer::generateLocal"
+      "scripts/run-modman.sh"
     ],
     "pre-install-cmd": [
       "mkdir -p web/magento"

@@ -11,13 +11,24 @@ set :log_level, :debug
 set :linked_files, fetch(:linked_files, []).push('.env')
 set :linked_dirs, fetch(:linked_dirs, []).push('web/magento/media', 'web/magento/var/log', 'web/magento/var/cache')
 
-SSHKit.config.command_map[:composer] = "/usr/local/bin/composer"
+namespace :mage do
 
-namespace :deploy do
+  desc "Initialize Magento Linked Files/Directories"
+  task :init do
+    on roles(:all) do |host|
+      execute 'mkdir -p shared/web/magento'
+      execute 'mkdir -p shared/web/magento/log'
+      execute 'mkdir -p shared/web/magento/var'
+      execute 'mkdir -p shared/web/magento/media'
+      execute 'mkdir -p shared/web/magento/app/etc'
+      info 'Default shared directories created'
+    end
+  end
 
-  after :restart, :clear_cache do
-    on roles(:web), in: :groups, limit: 3, wait: 10 do
-
+  desc "Test"
+  task :test do
+    on roles(:all) do |host|
+      info "Test #{host}"
     end
   end
 
