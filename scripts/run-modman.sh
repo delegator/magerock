@@ -10,10 +10,8 @@ if [ -e ".modman" ]
 then
   echo "└─ Modman already initialized"
 else
-  echo -n "├─ "
-  $MM init
-  echo -n "└─ "
-  $MM link ../theme
+  echo "├─ $($MM init)"
+  echo "└─ $($MM link ../theme)"
 fi
 
 popd 1>/dev/null
