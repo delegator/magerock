@@ -13,7 +13,8 @@ Fork this repo to start a new Magento site with everything in place for quick an
 In the following steps, <stage> is one of (production|staging|testing)
 
 1. Setup the `.env` file in the deploy directory appropriately
-2. Locally, run `bin/cap <stage> mage:init`
-3. Locally, run `bin/cap <stage> deploy:check`
-4. Locally, run `bin/cap <stage> deploy`
-5. Locally, run `bin/cap <stage> mage:install` if you want a fresh Magento install
+2. Run `bin/cap <stage> mage:init`
+3. Run `bin/cap <stage> deploy:check`
+4. Run `bin/cap <stage> deploy`
+5. Run `bin/cap <stage> mage:modman`
+6. Run `bin/cap <stage> mage:install` if you want a fresh Magento install

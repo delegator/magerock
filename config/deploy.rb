@@ -26,8 +26,16 @@ namespace :mage do
     end
   end
 
-  desc "Test"
-  task :test do
+  desc "Install Magento"
+  task :install do
+    on roles(:all) do |host|
+      info 'Installing Magento using .env file for settings'
+      execute "#{deploy_to}/current/scripts/install-magento.sh #{SSHKit.config.command_map[:php]}"
+    end
+  end
+
+  desc "Deploy Modman"
+  task :modman do
     on roles(:all) do |host|
       execute "#{deploy_to}/current/scripts/run-modman.sh #{SSHKit.config.command_map[:modman]}"
     end

@@ -44,9 +44,6 @@
     "psr-4": { "": "scripts" }
   },
   "scripts": {
-    "post-install-cmd": [
-      "scripts/run-modman.sh"
-    ],
     "pre-install-cmd": [
       "mkdir -p web/magento"
     ]
