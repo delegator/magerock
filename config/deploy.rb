@@ -4,6 +4,8 @@ lock '3.4.0'
 set :application, 'magerock'
 set :repo_url, 'git@github.com:delegator/magerock.git'
 
+set :branch, `git rev-parse --abbrev-ref HEAD`.chomp
+
 set :log_level, :debug
 
 set :linked_files, fetch(:linked_files, []).push('app/etc/local.xml', '.env')
