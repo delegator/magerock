@@ -17,11 +17,11 @@ namespace :mage do
   task :init do
     on roles(:all) do |host|
       info :deploy_to
-      execute 'mkdir -p shared/web/magento'
-      execute 'mkdir -p shared/web/magento/log'
-      execute 'mkdir -p shared/web/magento/var'
-      execute 'mkdir -p shared/web/magento/media'
-      execute 'mkdir -p shared/web/magento/app/etc'
+      execute "mkdir -p #{deploy_to}/shared/web/magento"
+      execute "mkdir -p #{deploy_to}/shared/web/magento/log"
+      execute "mkdir -p #{deploy_to}/shared/web/magento/var"
+      execute "mkdir -p #{deploy_to}/shared/web/magento/media"
+      execute "mkdir -p #{deploy_to}/shared/web/magento/app/etc"
       info 'Default shared directories created'
     end
   end
