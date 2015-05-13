@@ -1,9 +1,7 @@
 #!/bin/bash
 DIR=$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )
 
-MM="$1"
-echo "foo"
-echo "bar: $MM"
+MM=${1:-modman}
 
 pushd $DIR/../web/magento >/dev/null
 
