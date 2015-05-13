@@ -41,18 +41,13 @@ class Installer
         }
         self::output($spacer . "│  └─ Successfully loaded .env", Installer::SUCCESS);
     }
-    public static function command($cmd, $verbose=false, $mute=true)
+    public static function command($cmd, $verbose=false)
     {
-        if (!$mute) {
+        if ($verbose) {
             self::output("Running `$cmd`", Installer::WARNING);
         }
         exec('pushd web/magento && ' . $cmd . ' && popd',$output,$error);
         if ($verbose) {
-            if (!$error) {
-                self::output("Finished", Installer::SUCCESS);
-            } else {
-                self::output("Encountered Errors", Installer::DANGER);
-            }
             foreach($output as $o) {
                 self::output(">> $o", Installer::WARNING);    
             }
