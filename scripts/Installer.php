@@ -46,13 +46,12 @@ class Installer
         if ($verbose) {
             self::output("Running `$cmd`", Installer::WARNING);
         }
-        exec('pushd web/magento && ' . $cmd . ' && popd',$output,$error);
+        $return = self::my_shell_exec('pushd web/magento && ' . $cmd . ' && popd',$stdout,$stderr);
         if ($verbose) {
-            foreach($output as $o) {
-                self::output(">> $o", Installer::WARNING);    
-            }
+            self::output("o>> $stdout", Installer::WARNING);
+            self::output("e>> $stderr", Installer::DANGER);
         }
-        return !$error; //return whether successful or not
+        return (!$return); //return whether successful or not
     }
     public static function generateLocal()
     {   
@@ -113,9 +112,10 @@ class Installer
             . '--admin_email "' . getenv('ADMIN_EMAIL') . '" '
             . '--admin_username "' . getenv('ADMIN_USER') . '" '
             . '--admin_password "' . getenv('ADMIN_PASSWORD') . '" '
-            . '--encryption_key "'. getenv('SECRET_KEY') . '" ';
+            . '--encryption_key "'. getenv('SECRET_KEY') . '" '
+            . '--skip_url_validation 1';
 
-            if (self::command($cmd . ' 2>&1', true)) {
+            if (self::command($cmd, true)) {
                 self::output("        └─ Success!");
             } else {
                 self::output("        └─ Something went wrong", Installer::DANGER);
@@ -147,5 +147,17 @@ class Installer
         if ($newline) {
             echo "\n";
         }
+    }
+
+    private static function my_shell_exec($cmd, &$stdout=null, &$stderr=null) {
+        $proc = proc_open($cmd,[
+            1 => ['pipe','w'],
+            2 => ['pipe','w'],
+        ],$pipes);
+        $stdout = stream_get_contents($pipes[1]);
+        fclose($pipes[1]);
+        $stderr = stream_get_contents($pipes[2]);
+        fclose($pipes[2]);
+        return proc_close($proc);
     }
 }
