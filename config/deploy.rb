@@ -37,7 +37,7 @@ namespace :mage do
   desc "Deploy Modman"
   task :modman do
     on roles(:all) do |host|
-      execute "#{deploy_to}/current/scripts/run-modman.sh #{SSHKit.config.command_map[:modman]}"
+      execute "#{deploy_to}/current/scripts/run-modman.sh #{SSHKit.config.command_map[:modman]} #{SSHKit.config.command_map[:modman_gen]}"
     end
   end
 
