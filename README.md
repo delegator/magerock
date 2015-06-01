@@ -17,13 +17,12 @@ In the following steps, `<stage>` is the Capistrano stage you want to use.
 2. Run `bin/cap <stage> mage:init`
 3. Setup the `.env` file in the deploy directory appropriately
 4. Run `bin/cap <stage> deploy:check`
-5. Run `bin/cap <stage> deploy`
-6. Run `bin/cap <stage> mage:modman`
-7. Run `bin/cap <stage> mage:install` if you want a fresh Magento install
+5. Run `bin/cap <stage> deploy` (`mage:modman` and `mage:localxml` are now post-deploy tasks)
+6. [Optional] Run `bin/cap <stage> mage:install` if you want a fresh Magento install
 
-# Things to keep in mind
+# Etc.
 ### modman
-In Magerock based projects, we can and prefer to keep extensions in their own modman linked directories a la 
+* In Magerock based projects, we can and prefer to keep extensions in their own modman linked directories a la 
 ```web
 ├── magento
 ├── some-extension-here
@@ -31,3 +30,5 @@ In Magerock based projects, we can and prefer to keep extensions in their own mo
 ├── some-theme-overrides
 └── theme```
 When running `./scripts/run-modman.sh` for the first time, it will generate modman files for any extensions that don't have them using `modman-gen`. 
+
+* `bin/cap <stage> mage:prodgen` (or `php -f web/magento/shell/generate.php -- -n 50`) generates 50 lorem-ipsum-esque products.
