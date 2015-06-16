@@ -28,7 +28,8 @@ In the following steps, `<stage>` is the Capistrano stage you want to use.
 ├── some-extension-here
 ├── some-other-extension
 ├── some-theme-overrides
-└── theme```
+└── theme
+```
 When running `./scripts/run-modman.sh` for the first time, it will generate modman files for any extensions that don't have them using `modman-gen`. 
 
 * `bin/cap <stage> mage:prodgen` (or `php -f web/magento/shell/generate.php -- -n 50`) generates 50 lorem-ipsum-esque products.
