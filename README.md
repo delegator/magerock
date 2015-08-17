@@ -11,7 +11,7 @@ Fork this repo to start a new Magento site with everything in place for quick an
 4. Run `./scripts/install-magento.sh` to get a fresh Magento install
 
 ### Remote Stage Environment
-In the following steps, `<stage>` is the Capistrano stage you want to use. 
+In the following steps, `<stage>` is the Capistrano stage you want to use.
 
 1. Set up the Capistrano stage you want to use
 2. Run `bin/cap <stage> mage:init`
@@ -22,14 +22,13 @@ In the following steps, `<stage>` is the Capistrano stage you want to use.
 
 # Etc.
 ### modman
-* In Magerock based projects, we can and prefer to keep extensions in their own modman linked directories a la 
-```web
-├── magento
+* In Magerock based projects, we can and prefer to keep extensions in their own modman linked directories a la
+```src
 ├── some-extension-here
 ├── some-other-extension
 ├── some-theme-overrides
 └── theme
 ```
-When running `./scripts/run-modman.sh` for the first time, it will generate modman files for any extensions that don't have them using `modman-gen`. 
+When running `./scripts/run-modman.sh` for the first time, it will generate modman files for any extensions that don't have them using `modman-gen`.
 
 * `bin/cap <stage> mage:prodgen` (or `php -f web/magento/shell/generate.php -- -n 50`) generates 50 lorem-ipsum-esque products.
