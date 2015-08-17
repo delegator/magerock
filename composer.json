@@ -21,7 +21,7 @@
       "type": "composer",
       "url": "http://packages.firegento.com"
     }
-  ], 
+  ],
   "require": {
     "php": ">=5.3",
     "aydin-hassan/magento-core-composer-installer": "~1.2",
@@ -30,9 +30,9 @@
     "vlucas/phpdotenv": "~1.1"
   },
   "extra": {
-    "magento-root-dir": "web/magento",
+    "magento-root-dir": "web",
     "magento-core-deploy" : {
-      "excludes": [ 
+      "excludes": [
         "media",
         "var/log",
         "var/cache",
@@ -45,7 +45,7 @@
   },
   "scripts": {
     "pre-install-cmd": [
-      "mkdir -p web/magento"
+      "mkdir -p web"
     ]
   }
 }

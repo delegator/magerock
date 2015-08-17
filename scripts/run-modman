@@ -1,0 +1,27 @@
+#!/usr/bin/env ruby
+
+original_cwd = Dir.pwd
+
+# Locate all valid modules in the `src` directory
+Dir.chdir('src')
+modules = Dir.glob('*').select do |module_dir|
+  modman_file = File.join(module_dir, 'modman')
+  File.directory?(module_dir) && File.exist?(modman_file)
+end
+
+puts "Installing modules #{modules}"
+
+# Initialize modman in the public web root
+web_dir = File.join(original_cwd, 'web')
+Dir.chdir(web_dir)
+system('modman init') unless File.directory?('.modman')
+
+# Install and deploy all modules
+modules.each do |m|
+  Dir.chdir(web_dir)
+  relpath = File.join('../src', m)
+  unless system("modman link #{relpath}")
+    Dir.chdir('.modman')
+    system("modman deploy #{m}")
+  end
+end

@@ -12,11 +12,11 @@ set :linked_files, fetch(:linked_files, []).push(
   '.env',
 )
 set :linked_dirs, fetch(:linked_dirs, []).push(
-  'web/magento/media/catalog',
-  'web/magento/media/tmp', 
-  'web/magento/media/import', 
-  'web/magento/var/log', 
-  'web/magento/var/cache'
+  'web/media/catalog',
+  'web/media/tmp',
+  'web/media/import',
+  'web/var/log',
+  'web/var/cache'
 )
 set :grunt_target_path, -> { release_path.join('') } # Grunt
 
@@ -26,12 +26,12 @@ namespace :mage do
   task :init do
     on roles(:all) do |host|
       info :deploy_to
-      execute "mkdir -p #{deploy_to}/shared/web/magento"
-      execute "mkdir -p #{deploy_to}/shared/web/magento/var/log"
-      execute "mkdir -p #{deploy_to}/shared/web/magento/var/cache"
-      execute "mkdir -p #{deploy_to}/shared/web/magento/media/catalog"
-      execute "mkdir -p #{deploy_to}/shared/web/magento/media/tmp"
-      execute "mkdir -p #{deploy_to}/shared/web/magento/media/import"
+      execute "mkdir -p #{deploy_to}/shared/web"
+      execute "mkdir -p #{deploy_to}/shared/web/var/log"
+      execute "mkdir -p #{deploy_to}/shared/web/var/cache"
+      execute "mkdir -p #{deploy_to}/shared/web/media/catalog"
+      execute "mkdir -p #{deploy_to}/shared/web/media/tmp"
+      execute "mkdir -p #{deploy_to}/shared/web/media/import"
       info 'Default shared directories created'
     end
   end
@@ -63,7 +63,7 @@ namespace :mage do
   task :prodgen do
     on roles(:all) do |host|
       info 'Generating products'
-      execute "#{SSHKit.config.command_map[:php]} -f #{deploy_to}/current/web/magento/shell/generate.php -- -n 50"
+      execute "#{SSHKit.config.command_map[:php]} -f #{deploy_to}/current/web/shell/generate.php -- -n 50"
     end
   end
 

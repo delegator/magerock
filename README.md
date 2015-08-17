@@ -6,7 +6,7 @@ Fork this repo to start a new Magento site with everything in place for quick an
 ### Local Dev Environment
 1. Clone the repo
 2. Setup your `.env` file appropriately
-3. Run `composer install`
+3. Run `composer update`
 4. Run `./scripts/run-modman.sh`
 4. Run `./scripts/install-magento.sh` to get a fresh Magento install
 

@@ -6,7 +6,7 @@ M=${1:-n98-magerun.phar}
 
 source $DIR/../.env
 
-pushd $DIR/../web/magento >>/dev/null
+pushd $DIR/../web >>/dev/null
 
 if [ -e app/etc/local.xml ]
 then
