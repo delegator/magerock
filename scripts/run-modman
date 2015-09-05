@@ -2,11 +2,20 @@
 
 original_cwd = Dir.pwd
 
-puts "Installing 'src' dir"
-
-# Initialize modman in the public web root
 web_dir = File.join(original_cwd, 'web')
-Dir.chdir(web_dir)
-system('modman init') unless File.directory?('.modman')
-
-system("modman link ../src/")
+begin
+  Dir.chdir(web_dir) do
+    if Dir.exist?(File.join(web_dir, '.modman'))
+      # Deploy modman
+      puts "Deploying 'src' dir"
+      system("modman deploy src")
+    else
+      # Initialize modman in the public web root
+      puts "Installing 'src' dir"
+      system("modman init")
+      system("modman link ../src/")
+    end
+  end
+rescue
+  puts "I can't find the 'web/' dir. Have you ran 'composer update' yet?"
+end
