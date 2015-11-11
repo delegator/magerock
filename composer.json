@@ -23,6 +23,18 @@
     "magento-hackathon/magento-composer-installer": "3.0.6",
     "vlucas/phpdotenv": "~2.1.0"
   },
+  "require-dev": {
+    "ext-curl": "*",
+    "ext-dom": "*",
+    "ext-gd": "*",
+    "ext-hash": "*",
+    "ext-iconv": "*",
+    "ext-mcrypt": "*",
+    "ext-pcre": "*",
+    "ext-pdo": "*",
+    "ext-pdo_mysql": "*",
+    "ext-simplexml": "*"
+  },
   "extra": {
     "magento-root-dir": "web",
     "magento-core-deploy" : {
