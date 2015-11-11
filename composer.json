@@ -1,33 +1,27 @@
 {
   "name": "delegator/magerock",
   "type": "project",
-  "description": "",
+  "license": "Apache-2.0",
+  "description": "A modern Magento 1.x stack",
   "homepage": "https://www.delegator.com",
-  "license": "proprietary",
   "config": {
-    "preferred-install": "dist",
-    "generate-salts": true
+    "preferred-install": "dist"
+  },
+  "support": {
+    "issues": "https://github.com/delegator/magerock/issues"
   },
   "repositories": [
-    {
-      "type": "composer",
-      "url": "http://wpackagist.org"
-    },
-    {
-      "type": "vcs",
-      "url": "git@github.com:AydinHassan/magento-community.git"
-    },
     {
       "type": "composer",
       "url": "http://packages.firegento.com"
     }
   ],
   "require": {
-    "php": ">=5.3",
-    "aydin-hassan/magento-core-composer-installer": "~1.2",
-    "magento/magento": "1.9.1.0",
-    "magento-hackathon/magento-composer-installer": "3.0.2",
-    "vlucas/phpdotenv": "~1.1"
+    "php": ">=5.4",
+    "aydin-hassan/magento-core-composer-installer": "1.3.0",
+    "firegento/magento": "1.9.2.2",
+    "magento-hackathon/magento-composer-installer": "3.0.6",
+    "vlucas/phpdotenv": "~2.1.0"
   },
   "extra": {
     "magento-root-dir": "web",
@@ -41,7 +35,15 @@
     }
   },
   "autoload": {
-    "psr-4": { "": "scripts" }
+    "psr-0": {
+      "": [
+        "web/app",
+        "web/app/code/local",
+        "web/app/code/community",
+        "web/app/code/core",
+        "web/lib"
+      ]
+    }
   },
   "scripts": {
     "pre-install-cmd": [
