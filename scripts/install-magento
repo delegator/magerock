@@ -26,6 +26,9 @@ php -f install.php -- \
   --admin_username "$ADMIN_USER" \
   --admin_password "$ADMIN_PASSWORD" \
   --encryption_key "$SECRET_KEY" \
-  --skip_url_validation 1 \
+  --skip_url_validation 1
+
+# Test config
+n98-magerun dev:symlinks --global --on
 
 popd >/dev/null
