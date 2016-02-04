@@ -14,4 +14,7 @@ n98-magerun local-config:generate \
   "$ADMIN_URL" \
   "$SECRET_KEY"
 
+# Test config
+n98-magerun dev:symlinks --global --on
+
 popd >/dev/null

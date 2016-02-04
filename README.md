@@ -16,7 +16,7 @@ In your local development environment:
 
 ```bash
 # Create a new project from this template
-$ composer create-project delegator/magerock myproject
+$ composer create-project delegator/magerock myproject dev-master
 
 # Go to your new project
 $ cd myproject
