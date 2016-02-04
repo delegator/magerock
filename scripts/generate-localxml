@@ -1,0 +1,17 @@
+#!/usr/bin/env bash
+
+DIR=$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )
+source "$DIR"/../.env
+pushd "$DIR"/../web >/dev/null
+
+# Generate config
+n98-magerun local-config:generate \
+  "$DB_HOST" \
+  "$DB_USER" \
+  "$DB_PASSWORD" \
+  "$DB_NAME" \
+  "$SESSION_SAVE" \
+  "$ADMIN_URL" \
+  "$SECRET_KEY"
+
+popd >/dev/null
