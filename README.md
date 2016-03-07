@@ -83,8 +83,13 @@ In the following steps, `<stage>` is the Capistrano stage you want to use.
 4. Run `bin/cap <stage> deploy:check`
 5. Run `bin/cap <stage> deploy`
 
+# License
+
+Please see [LICENSE][6] for license information.
+
 [1]: https://secure.php.net/
 [2]: https://getcomposer.org/
 [3]: http://magerun.net/
 [4]: https://www.ruby-lang.org/
 [5]: http://bundler.io/
+[6]: ./LICENSE
