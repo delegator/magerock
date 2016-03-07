@@ -9,6 +9,7 @@ Use this project template to start a new Magento CE 1.x site with everything in 
  - [PHP][1] `>= 5.4`
  - [Composer][2] `>= 1.0.0-alpha11`
  - [n98-magerun][3] `>= 1.97.11`
+ - [Ruby][4] `>= 1.9.3` with [Bundler][5]
 
 # Getting Started
 
@@ -66,6 +67,14 @@ directory above.
 
 # Deploying
 
+```bash
+# Install dependencies
+$ bundle install
+
+# List available capistrano tasks
+$ bin/cap -T
+```
+
 In the following steps, `<stage>` is the Capistrano stage you want to use.
 
 1. Set up the Capistrano stage you want to use
@@ -77,3 +86,5 @@ In the following steps, `<stage>` is the Capistrano stage you want to use.
 [1]: https://secure.php.net/
 [2]: https://getcomposer.org/
 [3]: http://magerun.net/
+[4]: https://www.ruby-lang.org/
+[5]: http://bundler.io/
