@@ -1,18 +1,22 @@
-server 'localhost', user: 'YOURLOGINNAME', roles: %w{app db web}
+# SSH user/host configuration
+server 'testing.example.com', user: 'archie', roles: %w{app db web}
 
-# Set rails environment
+# Magento environment
 set :mage_env, 'staging'
 
 # Destination directory
-set :deploy_to, '/ABSOLUTE/PATH/TO/DEPLOY/LOCATION'
+set :deploy_to, '/absolute/path/to/deploy/directory'
 
-# You should probably set these to where each of them are found
-#SSHKit.config.command_map[:php] = "/usr/local/bin/php"
+# If these binaries are not in your $PATH, you may remap their locations here.
+# Otherwise, you may safely omit these configuration directives.
+#SSHKit.config.command_map[:php] = "/usr/bin/php"
 #SSHKit.config.command_map[:composer] = "/usr/local/bin/composer"
 #SSHKit.config.command_map[:modman] = "/usr/local/bin/modman"
-#SSHKit.config.command_map[:modman_gen] = "~/bin/modman-gen"
-#SSHKit.config.command_map[:magerun] = "/usr/local/bin/n98-magerun.phar"
+#SSHKit.config.command_map[:'n98-magerun'] = "/usr/local/bin/n98-magerun"
 
-set :composer_install_flags, '--no-dev --no-interaction --silent --optimize-autoloader'
+# You can override composer defaults by setting the variables shown below.
+#set :composer_install_flags, '--no-dev --no-interaction --quiet --optimize-autoloader'
+#set :composer_roles, :all
 
+# Magento release directories are large! Only save the most recent release.
 set :keep_releases, 1
