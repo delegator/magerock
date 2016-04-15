@@ -13,11 +13,7 @@
   "repositories": [
     {
       "type": "composer",
-      "url": "http://packages.firegento.com"
-    },
-    {
-      "type": "vcs",
-      "url": "https://github.com/delegator/magento.git"
+      "url": "https://packages.firegento.com"
     },
     {
       "type": "path",
@@ -31,7 +27,7 @@
   "require": {
     "php": ">=5.4",
     "aydin-hassan/magento-core-composer-installer": "1.3.0",
-    "delegator/magento": "1.9.2.4",
+    "firegento/magento": "1.9.2.4",
     "magento-hackathon/magento-composer-installer": "3.0.6"
   },
   "require-dev": {
@@ -50,6 +46,8 @@
     "magento-root-dir": "web",
     "magento-core-deploy" : {
       "excludes": [
+        "dev",
+        "downloader",
         "media",
         "var/log",
         "var/cache",
