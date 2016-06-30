@@ -39,6 +39,10 @@ $ ./scripts/install-magento
 # Woohoo! You're all done!
 ```
 
+# Documentation
+
+Please see https://github.com/delegator/magerock/wiki for complete documentation!
+
 # Project layout
 
 In Magerock-based projects, your project will look roughly like this:

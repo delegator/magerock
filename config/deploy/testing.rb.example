@@ -2,7 +2,7 @@
 server 'testing.example.com', user: 'archie', roles: %w{app db web}
 
 # Magento environment
-set :mage_env, 'staging'
+set :mage_env, 'testing'
 
 # Destination directory
 set :deploy_to, '/absolute/path/to/deploy/directory'
@@ -15,6 +15,7 @@ set :deploy_to, '/absolute/path/to/deploy/directory'
 #SSHKit.config.command_map[:'n98-magerun'] = "/usr/local/bin/n98-magerun"
 
 # You can override composer defaults by setting the variables shown below.
+# Note: Certain modules may not work properly with the --optimize-autoloader flag (on by default)
 #set :composer_install_flags, '--no-dev --no-interaction --quiet --optimize-autoloader'
 #set :composer_roles, :all
 
