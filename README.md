@@ -22,11 +22,7 @@ $ composer create-project delegator/magerock myproject dev-master --repository-u
 # Go to your new project
 $ cd myproject
 
-# Install dependencies
-$ composer install
-
 # Copy the sample environment file and edit where appropriate.
-# You can generate an encryption key by running `$ openssl rand -hex 16`
 $ cp .env.example .env
 
 # Generate a local.xml file based on the values in .env
