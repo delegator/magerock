@@ -17,7 +17,7 @@
     },
     {
       "type": "path",
-      "url": "third-party-extensions/*/*"
+      "url": "third-party/*/*"
     },
     {
       "type": "path",

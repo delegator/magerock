@@ -17,7 +17,7 @@ In your local development environment:
 
 ```bash
 # Create a new project from this template
-$ composer create-project delegator/magerock myproject dev-master
+$ composer create-project delegator/magerock myproject --repository-url=https://packages.delegator.com/
 
 # Go to your new project
 $ cd myproject
@@ -41,29 +41,37 @@ $ ./scripts/install-magento
 
 # Project layout
 
-In Magerock-based projects, your project code is located in two places:
+In Magerock-based projects, your project will look roughly like this:
 
 ```
 ├── packages/
-└── third-party-extensions/
+├── third-party/
+└── web/
 ```
 
-### Packages directory
+:exclamation: Wait! Don't copy that extension code just yet! :exclamation:
 
-Are you working on custom modules? Overriding some jank third party code? Your
-code belongs in the `packages/` directory. It is suggested that you use the
-naming scheme `vendor-name/extension-name`.
+You might be surprised to find just how many of your favorite Magento modules
+are installable directly via composer, without you having to copy a single line
+of PHP code into your project! Take a look: https://packages.firegento.com/
 
-### Third party extensions
+### `packages` directory
 
-You'll be surprised to find just how many of your favorite Magento modules are
-installable directly via composer, without you having to copy a single line of
-PHP code into your project! Take a look: http://packages.firegento.com/
+Are you working on custom modules? Taking ownership of a theme? Overriding some
+jank third party code? Your code belongs in the `packages/` directory. It is
+suggested that you use the naming scheme `vendor-name/extension-name`.
 
-In the event that your extension is not an open-source extension listed in the
-Firegento package repository, you should place it in the
-`third-party-extensions` directory. Use the same naming scheme as the packages
-directory above.
+### `third-party` directory
+
+Purchased extensions and other modules not available in the Firegento repository
+should be placed in the `third-party` directory. Use the same naming scheme as
+the packages directory above (`third-party/extension-name`).
+
+### `web` directory
+
+This is your web root. Magento core will be installed here. When you run `$
+composer install`, Composer will link each module's files into the configured
+locations, much like modman.
 
 # Deploying
 

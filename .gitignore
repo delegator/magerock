@@ -1,5 +1,14 @@
-vendor
-web
+# Deps
+vendor/
+
+# Webroot
+web/*
+!web/.gitkeep
+
+# Config
 .env
 config/deploy/testing.rb
+
+# Dependency tools
 composer.lock
+Gemfile.lock
