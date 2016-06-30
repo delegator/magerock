@@ -1,9 +1,0 @@
-{
-  "name": "initech/tps-report",
-  "type": "magento-module",
-  "version": "1.0.0",
-  "license": "proprietary",
-  "require": {
-    "magento-hackathon/magento-composer-installer": "*"
-  }
-}

@@ -7,7 +7,7 @@ Use this project template to start a new Magento CE 1.x site with everything in 
 # Requirements
 
  - [PHP][1] `>= 5.4`
- - [Composer][2] `>= 1.0.0-alpha11`
+ - [Composer][2] `>= 1.0.0`
  - [n98-magerun][3] `>= 1.97.11`
  - [Ruby][4] `>= 1.9.3` with [Bundler][5]
 
