@@ -1,14 +1,10 @@
-# Deps
+# Configuration
+.env
+config/deploy/testing.rb
+
+# Dependencies
 vendor/
 
 # Webroot
 web/*
 !web/.gitkeep
-
-# Config
-.env
-config/deploy/testing.rb
-
-# Dependency tools
-composer.lock
-Gemfile.lock
