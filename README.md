@@ -18,6 +18,7 @@ In your local development environment:
 ```bash
 # Create a new project from this template
 $ composer create-project delegator/magerock myproject dev-master --repository-url=https://packages.delegator.com/
+# Change this to the name of your project!   ^^^^^^^^^
 
 # Go to your new project
 $ cd myproject
