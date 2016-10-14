@@ -69,6 +69,7 @@
   "scripts": {
     "pre-install-cmd": [
       "mkdir -p web"
-    ]
+    ],
+    "serve": "php -S 127.0.0.1:8080 -t web router.php"
   }
 }

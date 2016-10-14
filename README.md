@@ -27,15 +27,12 @@ $ cd myproject
 # If you'd like to use the PHP built-in web server, we don't recommend changing the BASE_URL.
 $ cp .env.example .env
 
-# Generate a local.xml file based on the values in .env
-$ ./scripts/generate-localxml
-
 # Install Magento
 $ ./scripts/install-magento
 
 # Using your favorite web server, create a virtualhost or server block that points at the web directory.
 # Alternatively, for development, use PHP's built-in web server for quick and easy setup.
-$ php -S 127.0.0.1:8080 -t web router.php
+$ composer run serve
 ```
 
 # Documentation
