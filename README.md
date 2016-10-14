@@ -35,7 +35,7 @@ $ ./scripts/install-magento
 
 # Use PHP's built-in web server to run the site locally.
 # Visit http://localhost:8080/ in your favorite browser!
-$ composer run serve
+$ php -S 127.0.0.1:8080 -t web router.php
 ```
 
 # Documentation
