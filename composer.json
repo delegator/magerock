@@ -43,6 +43,7 @@
     "ext-simplexml": "*"
   },
   "extra": {
+    "skip-suggest-repositories": true,
     "magento-root-dir": "web",
     "magento-core-deploy" : {
       "excludes": [
