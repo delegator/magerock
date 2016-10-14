@@ -27,11 +27,14 @@ $ cd myproject
 # If you'd like to use the PHP built-in web server, we don't recommend changing the BASE_URL.
 $ cp .env.example .env
 
-# Install Magento
+# Create the database you specified in your .env file:
+$ mysql -e "create database myproject_development"
+
+# Install Magento (wait patiently!)
 $ ./scripts/install-magento
 
-# Using your favorite web server, create a virtualhost or server block that points at the web directory.
-# Alternatively, for development, use PHP's built-in web server for quick and easy setup.
+# Use PHP's built-in web server to run the site locally.
+# Visit http://localhost:8080/ in your favorite browser!
 $ composer run serve
 ```
 
